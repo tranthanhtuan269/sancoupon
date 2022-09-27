@@ -145,10 +145,10 @@
           <div class="row flex-center">
             <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0"><a class="img-landing-banner" href="#!"><img class="img-fluid" src="/public/assets/img/gallery/hero-header.png" alt="hero-header" /></a></div>
             <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
-              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Bạn có đang "đói"?</h1>
+              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Bạn có đang 'đói'?</h1>
               <h1 class="text-800 mb-3 fs-4">Truy cập ngay <b><i><u>VÒNG QUAY MAY MẮN</u></i></b><br class="d-none d-xxl-block" /> để tích điểm và mua đồ rẻ hơn</h1>
               <div class="w-xxl-75">
-                <button class="btn btn-danger" type="submit">Vòng Quay May Mắn</button>
+                <a class="btn btn-danger" href="/vongquaymayman">Vòng Quay May Mắn</a>
               </div>
             </div>
           </div>
