@@ -51,27 +51,22 @@
               <div class="input-group-icon pe-2"><i class="fas fa-search input-box-icon text-primary"></i>
                 <input class="form-control shadow-warning border-0 input-box bg-100" type="search" placeholder="Tìm đồ ăn" aria-label="Search" />
               </div>
-                <div class="btn btn-white shadow-warning text-warning" id="show-login-panel">
-                  @auth
-                    <i class="fas fa-user me-2"></i> {{ Auth::user()->name }}
-                  @else
-                    <i class="fas fa-user me-2"></i>Đăng nhập
-                  @endauth
+                @auth
+                <div class="btn btn-white shadow-warning text-warning" id="show-logout">
+                  <i class="fas fa-user me-2"></i> {{ Auth::user()->name }}
+                  <div class="btn btn-danger d-none" id="btn-profile">Profile</div>
+                  <div class="btn btn-secondary d-none" id="btn-logout">Logout</div>
                 </div>
+                @else
+                <div class="btn btn-white shadow-warning text-warning" id="show-login-panel">
+                  <i class="fas fa-user me-2"></i>Đăng nhập
+                </div>
+                @endauth
             </form>
           </div>
         </div>
       </nav>
       @auth
-      <div class="card w-xxl-25 d-none" id="login-panel">
-        <div class="card-body">
-          <form class="row gx-2 gy-2 align-items-center">
-            <div class="">
-              <div class="btn btn-danger" id="btn-logout">Logout</div>
-            </div>
-          </form>
-        </div>
-      </div>
       @else
       <div class="card w-xxl-25 d-none" id="login-panel">
         <div class="card-body">

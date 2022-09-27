@@ -13,6 +13,16 @@ $(document).ready(function(){
 		}
 	})
 
+	$('#show-logout').click(function(){
+		if($('#btn-logout').hasClass('d-none')){
+			$('#btn-profile').removeClass('d-none')
+			$('#btn-logout').removeClass('d-none')
+		}else{
+			$('#btn-profile').addClass('d-none')
+			$('#btn-logout').addClass('d-none')
+		}
+	})
+
 	$('.btn-cancel-login').click(function(){
 		$('#login-panel').addClass('d-none')
 	})

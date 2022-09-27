@@ -18533,3 +18533,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   top: 12px;
   left: 16px;
 } 
+
+#show-logout{
+  position: relative;
+}
+
+#btn-profile{
+  position: absolute;
+  top: 50px;
+  right: 0;
+  padding: 10px 40px;
+}
+
+#btn-logout{
+  position: absolute;
+  top: 105px;
+  right: 0;
+  padding: 10px 40px;
+}
