@@ -1,33 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>J2Team Community Offline</title>
-    <link rel="stylesheet" href="/public/luckywheel/css/typo/typo.css" />
-    <link rel="stylesheet" href="/public/luckywheel/css/hc-canvas-luckwheel.css" />
+@extends('layouts.app')
+
+@section('content')
     <style>
-      .hc-luckywheel{
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        margin-top: -175px;
-        margin-left: -270px;
+      #wrapper{
+        min-height: 698px;
+      }
+      #luckywheel .hc-luckywheel-container{
+        left: -16px;
+        top: -17px;
+      }
+      #luckywheel .hc-luckywheel-btn{
+        left: 195px;
+        top: 195px;
       }
     </style>
-  </head>
-  <body class="bg">
-    <div class="wrapper typo" id="wrapper">
-      <section id="luckywheel" class="hc-luckywheel">
-        <div class="hc-luckywheel-container">
-          <canvas class="hc-luckywheel-canvas" width="500px" height="500px"
-            >Vòng Xoay May Mắn</canvas
-          >
+    <link rel="stylesheet" href="/public/luckywheel/css/typo/typo.css" />
+    <link rel="stylesheet" href="/public/luckywheel/css/hc-canvas-luckwheel.css" />
+    <div class="container mt-8">
+      <div class="row">
+        <div class="col-6">
+          <div class="wrapper typo" id="wrapper">
+            <section id="luckywheel" class="col-6 hc-luckywheel">
+              <div class="hc-luckywheel-container">
+                <canvas class="hc-luckywheel-canvas" width="500px" height="500px"
+                  >Vòng Xoay May Mắn</canvas
+                >
+              </div>
+              <a class="hc-luckywheel-btn" href="javascript:;">Xoay</a>
+            </section>
+          </div>
         </div>
-        <a class="hc-luckywheel-btn" href="javascript:;">Xoay</a>
-      </section>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-3">
+              <label>Nickname: </label>
+            </div>
+            <div class="col-3">
+              {{ Auth::user()->name }}
+            </div>
+            <div class="col-3">
+            </div>
+            <div class="col-3">
+            </div>
+            <div class="col-3">
+              <label>Số coin: </label>
+            </div>
+            <div class="col-3">
+              {{ Auth::user()->coins }}
+            </div>
+            <div class="col-3">
+              <label>Số lần quay: </label>
+            </div>
+            <div class="col-3">
+              {{ Auth::user()->rolls }}
+            </div>
+          </div>
+          <div class="row">
+            <p class="text-center mt-3"><u>Lịch sử quay hôm nay</u></p>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Số lượt còn lại</th>
+                  <th scope="col">Phần thưởng</th>
+                  <th scope="col">Thời gian quay</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-</style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="/public/luckywheel/js/hc-canvas-luckwheel.js"></script>
     <script>
@@ -35,7 +99,7 @@
       var prizes = [
               {
                 text: "5 coins",
-                img: "/public/luckywheel/images/coin.png",
+                img: "/public/luckywheel/images/MoneySack.png",
                 number: 1,
                 percentpage: 0.05 // 5%
               },
@@ -49,17 +113,17 @@
                 text: "1 coin",
                 img: "/public/luckywheel/images/coin.png",
                 number: 1,
-                percentpage: 0.20 // 20%
-              },
-              {
-                text: "Mất lượt",
-                img: "/public/luckywheel/images/crying.png",
-                percentpage: 0.25 // 25%
+                percentpage: 0.2 // 20%
               },
               {
                 text: "Thêm 3 lượt",
                 img: "/public/luckywheel/images/exchange.png",
                 number: 1, // 1%,
+                percentpage: 0.25 // 25%
+              },
+              {
+                text: "Mất lượt",
+                img: "/public/luckywheel/images/crying.png",
                 percentpage: 0.4 // 40%
               },
             ];
@@ -160,5 +224,4 @@
         }
       }
     </script>
-  </body>
-</html>
+@endsection
