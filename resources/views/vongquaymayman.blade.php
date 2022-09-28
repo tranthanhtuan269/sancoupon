@@ -46,13 +46,13 @@
               <label>Số coin: </label>
             </div>
             <div class="col-3">
-              {{ Auth::user()->coins }}
+              <span id="user-coin">{{ Auth::user()->coins }}</span>
             </div>
             <div class="col-3">
               <label>Số lần quay: </label>
             </div>
             <div class="col-3">
-              {{ Auth::user()->rolls }}
+              <span id="user-roll">{{ Auth::user()->rolls }}</span>
             </div>
           </div>
           <div class="row">
@@ -67,25 +67,15 @@
                   <th scope="col">Thời gian quay</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="history-list">
+                @foreach($histories as $key=>$history)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{ ($key + 1) }}</th>
+                  <td>{{ $history->rolls }}</td>
+                  <td>{{ $history->detail }}</td>
+                  <td>{{ $history->created_at }}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -98,7 +88,7 @@
       var isPercentage = true;
       var prizes = [
               {
-                text: "5 coins",
+                text: "Túi quà",
                 img: "/public/luckywheel/images/MoneySack.png",
                 number: 1,
                 percentpage: 0.05 // 5%
@@ -150,12 +140,16 @@
                   'error'
                 )
               } else if (data == 'Mất lượt'){
+                // send data to server
+                SaveDataToServer(data);
                 Swal.fire(
                   'Bạn không trúng thưởng',
                   'Chúc bạn may mắn lần sau!',
                   'error'
                 )
               } else{
+                // send data to server
+                SaveDataToServer(data);
                 Swal.fire(
                   'Đã trúng giải',
                   data,
@@ -167,6 +161,34 @@
         },
         false
       );
+
+      function SaveDataToServer(data){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var data    = {
+            data    : data
+        };
+
+        $.ajax({
+          url: '/save-data-roll',
+          data : data,
+          method: "POST",
+          dataType:'json',
+          success: function(data) {
+            console.log(data);
+            $('#user-roll').text(data.roll)
+            $('#user-coin').text(data.coin)
+            $('#history-list').append('<tr><th scope="row">'+ 1 +'</th><td>'+data.history.rolls+'</td><td>'+data.history.detail+'</td><td>'+data.history.created_at+'</td></tr>')
+          },
+          error: function(data) {
+            console.log('Error:', data);
+          },
+        });
+      }
       function randomIndex(prizes){
         if(isPercentage){
           var counter = 1;

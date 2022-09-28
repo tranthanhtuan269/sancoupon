@@ -27,10 +27,6 @@ audio, canvas, video {
   display: inline-block;
 }
 
-body, button, input, select, textarea {
-  font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
-}
-
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   padding: 0;

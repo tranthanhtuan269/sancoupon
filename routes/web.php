@@ -13,16 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\HomeController;
 
-Route::get('/vongquaymayman', function () {
-    return view('vongquaymayman');
-});
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('vongquaymayman', [HomeController::class, 'vongquaymayman'])->middleware(['auth'])->name('dashboard');;
+
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+Route::post('/save-data-roll', [HomeController::class, 'saveDataRoll'])->middleware(['auth'])->name('save');
 
 require __DIR__.'/auth.php';
