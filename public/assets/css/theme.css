@@ -18551,3 +18551,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   right: 0;
   padding: 10px 40px;
 }
+
+.cart-logo{
+  width: 20px;
+  opacity: 0.8;
+  margin-right: 10px;
+}

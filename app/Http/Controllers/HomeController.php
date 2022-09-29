@@ -17,7 +17,8 @@ class HomeController extends Controller
 
     public function vongquaymayman(){
         $histories = History::where('user_id', Auth::id())->whereDate('created_at', Carbon::today())->orderBy('created_at', 'desc')->get();
-        return view('vongquaymayman', ['histories' => $histories]);
+        $coupons = Coupon::get();
+        return view('vongquaymayman', ['histories' => $histories, 'coupons' => $coupons]);
     }
 
     public function saveDataRoll(Request $request){
@@ -25,7 +26,7 @@ class HomeController extends Controller
         $user = Auth::user();
         if(isset($request->data)){
             $history = new History;
-            $history->rolls = Auth::user()->rolls;
+            $history->rolls = $user->rolls;
             switch($request->data){
                 case '1 coin':
                     $history->coupon_id = NULL;
@@ -70,6 +71,26 @@ class HomeController extends Controller
             $coupon = Coupon::find($history->coupon_id);
         }
         return response()->json(['status' => 200, 'message' => 'success', 'coin' => $user->coins, 'roll' => $user->rolls, 'history' => $history, 'coupon' => $coupon, 'created_at' => \Carbon\Carbon::parse($history->created_at)->format('Y-m-d h:i:s')]); 
+    }
+
+    public function buyRoll(Request $request){
+        $user = Auth::user();
+        if($user->coins >= 10){
+            $user->coins = $user->coins - 10;
+            $user->rolls = $user->rolls + 3;
+            $user->save();
+
+            $history = new History;
+            $history->rolls = $user->rolls;
+            $history->coupon_id = NULL;
+            $history->detail = 'Mua thêm 3 lượt';
+            $history->user_id = Auth::id();
+            $history->created_at = date("Y-m-d H:i:s");
+            $history->updated_at = date("Y-m-d H:i:s");
+            $history->save();
+            return response()->json(['status' => 200, 'message' => 'success', 'coin' => $user->coins, 'roll' => $user->rolls, 'history' => $history, 'created_at' => \Carbon\Carbon::parse($history->created_at)->format('Y-m-d h:i:s')]); 
+        }
+        return response()->json(['status' => 200, 'message' => 'unsuccess']); 
     }
 
     public function dashboard(){

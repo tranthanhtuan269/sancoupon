@@ -21,6 +21,7 @@ Route::get('vongquaymayman', [HomeController::class, 'vongquaymayman'])->middlew
 
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 Route::get('/test', [HomeController::class, 'test'])->middleware(['auth'])->name('test');
+Route::post('/buy-roll', [HomeController::class, 'buyRoll'])->middleware(['auth'])->name('buyRoll');
 Route::post('/save-data-roll', [HomeController::class, 'saveDataRoll'])->middleware(['auth'])->name('save');
 
 require __DIR__.'/auth.php';

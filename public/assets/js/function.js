@@ -78,4 +78,61 @@ $(document).ready(function(){
 			},
 		});
 	})
+
+	$('#buy-roll').click(function(){
+		var coin = parseInt($("#user-coin").text());
+		if(coin >= 10){
+		  $.ajaxSetup({
+			  headers: {
+				  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			  }
+		  });
+
+		  $.ajax({
+			url: '/buy-roll',
+			method: "POST",
+			dataType:'json',
+			success: function(data) {
+			  if(data.message == "success"){
+				var count = $('#history-list .item-history').length + 1;
+				$('#user-roll').text(data.roll)
+				$('#user-coin').text(data.coin)
+				$('#history-list').prepend('<div class="item-history"><div class="column-1">'+ count +'</div><div class="column-2">'+data.history.rolls+'</div><div class="column-3">'+data.history.detail+'</div><div class="column-4"></div><div class="column-5">'+returnDateFormat(data.created_at)+'</div></div>')
+			  }else{
+				Swal.fire(
+				  'Lỗi',
+				  'Bạn không đủ coin để mua thêm lượt quay!',
+				  'error'
+				)
+			  }
+			},
+			error: function(data) {
+			  console.log('Error:', data);
+			},
+		  });
+		}else{
+		  Swal.fire(
+			'Lỗi',
+			'Bạn không đủ coin để mua thêm lượt quay!',
+			'error'
+		  )
+		}
+	})
+
+	$('#show-list').click(function(){
+		if($('.gift-panel').hasClass('d-none')){
+			$('.gift-panel').removeClass('d-none')
+		}else{
+			$('.gift-panel').addClass('d-none')
+		}
+	})
+
+	$('#close-svg-btn').click(function(){
+		if($('.gift-panel').hasClass('d-none')){
+			$('.gift-panel').removeClass('d-none')
+		}else{
+			$('.gift-panel').addClass('d-none')
+		}
+	})
+	
 })
