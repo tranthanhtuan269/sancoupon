@@ -64,6 +64,7 @@
   // alert(transitionEnd);
 
   function init(opts) {
+    nRoll = opts.roll;
     fnGetPrize = opts.getPrize;
     fnGotBack = opts.gotBack;
     opts.config(function(data) {
@@ -71,6 +72,9 @@
       num = prizes.length;
       draw(opts);
     });
+    if(nRoll < 0){
+      addClass(btn, "disabled");
+    }
     events();
   }
 
@@ -164,6 +168,7 @@
    * @return {[type]} [description]
    */
   function events() {
+    
     bind(btn, "click", function() {
 
       addClass(btn, "disabled");

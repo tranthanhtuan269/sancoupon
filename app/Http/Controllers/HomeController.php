@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Carbon\Carbon;
 use App\Models\Coupon;
 use App\Models\History;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,7 @@ class HomeController extends Controller
     }
 
     public function vongquaymayman(){
-        $histories = History::where('user_id', Auth::id())->get();
+        $histories = History::where('user_id', Auth::id())->whereDate('created_at', Carbon::today())->orderBy('created_at', 'desc')->get();
         return view('vongquaymayman', ['histories' => $histories]);
     }
 
@@ -32,16 +34,16 @@ class HomeController extends Controller
                     $user->rolls = $user->rolls - 1;
                     $user->save();
                     break;
-                case '3 coin':
+                case '3 coins':
                     $history->coupon_id = NULL;
-                    $history->detail = '3 coin';
+                    $history->detail = '3 coins';
                     $user->coins = $user->coins + 3;
                     $user->rolls = $user->rolls - 1;
                     $user->save();
                     break;
                 case 'Túi quà':
-                    $rand = rand(1, count($coupons));
-                    $history->coupon_id = $rand;
+                    $rand = rand(0, count($coupons) - 1);
+                    $history->coupon_id = ($rand + 1);
                     $history->detail = $coupons[$rand]['detail'];
                     $user->rolls = $user->rolls - 1;
                     $user->save();
@@ -64,11 +66,19 @@ class HomeController extends Controller
             $history->created_at = date("Y-m-d H:i:s");
             $history->updated_at = date("Y-m-d H:i:s");
             $history->save();
+
+            $coupon = Coupon::find($history->coupon_id);
         }
-        return response()->json(['status' => 200, 'message' => 'success', 'coin' => $user->coins, 'roll' => $user->rolls, 'history' => $history]); 
+        return response()->json(['status' => 200, 'message' => 'success', 'coin' => $user->coins, 'roll' => $user->rolls, 'history' => $history, 'coupon' => $coupon, 'created_at' => \Carbon\Carbon::parse($history->created_at)->format('Y-m-d h:i:s')]); 
     }
 
     public function dashboard(){
         return view('dashboard');
+    }
+
+    public function test(){
+        $coupons = Coupon::get()->toArray();
+        $rand = rand(0, count($coupons) - 1);
+        dd($coupons[$rand]['detail']);
     }
 }
