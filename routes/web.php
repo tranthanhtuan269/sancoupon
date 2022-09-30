@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CouponController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
@@ -26,5 +29,8 @@ Route::get('/admin', [HomeController::class, 'admin'])->middleware(['auth'])->na
 Route::get('/logout', [HomeController::class, 'logout'])->middleware(['auth'])->name('logout');
 Route::post('/buy-roll', [HomeController::class, 'buyRoll'])->middleware(['auth'])->name('buyRoll');
 Route::post('/save-data-roll', [HomeController::class, 'saveDataRoll'])->middleware(['auth'])->name('save');
+Route::resource('partners', PartnerController::class);
+Route::resource('products', ProductController::class);
+Route::resource('coupons', CouponController::class);
 
 require __DIR__.'/auth.php';

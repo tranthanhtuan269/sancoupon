@@ -56,7 +56,9 @@
                   <ul class="user-link d-none">
                     <li><a href="{{ url('/profile') }}"> Profile </a></li>
                     @if(\Auth::id() == 1)
-                    <li><a href="{{ url('/admin') }}"> Admin </a></li>
+                    <li><a href="{{ url('/partners') }}"> Partners </a></li>
+                    <li><a href="{{ url('/products') }}"> Products </a></li>
+                    <li><a href="{{ url('/coupons') }}"> Coupons </a></li>
                     @endif
                     <li><a href="{{ url('/logout') }}"> Đăng xuất </a></li>
                   </ul>
