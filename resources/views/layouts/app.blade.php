@@ -40,7 +40,7 @@
     <!-- ===============================================-->
     <main class="main" id="top">
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
-        <div class="container"><a class="navbar-brand d-inline-flex" href="index.html"><img class="d-inline-block" src="/public/assets/img/gallery/logo.svg" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">Săn coupon</span></a>
+        <div class="container"><a class="navbar-brand d-inline-flex" href="/"><img class="d-inline-block" src="/public/assets/img/gallery/logo.svg" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">Săn coupon</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
           <div class="collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
             <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
@@ -52,8 +52,13 @@
                 @auth
                 <div class="btn btn-white shadow-warning text-warning" id="show-logout">
                   <i class="fas fa-user me-2"></i> {{ Auth::user()->name }}
-                  <div class="btn btn-danger d-none" id="btn-profile">Profile</div>
-                  <div class="btn btn-secondary d-none" id="btn-logout">Logout</div>
+                  <ul class="user-link d-none">
+                    <li><a href="{{ url('/profile') }}"> Profile </a></li>
+                    @if(\Auth::id() == 1)
+                    <li><a href="{{ url('/admin') }}"> Admin </a></li>
+                    @endif
+                    <li><a href="{{ url('/logout') }}"> Đăng xuất </a></li>
+                  </ul>
                 </div>
                 @else
                 <div class="btn btn-white shadow-warning text-warning" id="show-login-panel">

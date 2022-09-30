@@ -21,6 +21,20 @@ class HomeController extends Controller
         return view('vongquaymayman', ['histories' => $histories, 'coupons' => $coupons]);
     }
 
+    public function profile(){
+        return view('profile');
+    }
+
+    public function admin(){
+        return view('admin');
+    }
+
+    public function logout(){
+        auth()->logout();
+        // redirect to homepage
+        return redirect('/');
+    }
+
     public function saveDataRoll(Request $request){
         $coupons = Coupon::get()->toArray();
         $user = Auth::user();

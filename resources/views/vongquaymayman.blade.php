@@ -75,6 +75,8 @@
         border-radius: 50%;
         height: 40px;
         background-color: white;
+        opacity: 0.8;
+        cursor: pointer;
       }
       .item-gift-header{
         font-weight: bold;

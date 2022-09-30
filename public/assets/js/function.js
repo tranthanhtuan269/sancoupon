@@ -14,12 +14,10 @@ $(document).ready(function(){
 	})
 
 	$('#show-logout').click(function(){
-		if($('#btn-logout').hasClass('d-none')){
-			$('#btn-profile').removeClass('d-none')
-			$('#btn-logout').removeClass('d-none')
+		if($('.user-link').hasClass('d-none')){
+			$('.user-link').removeClass('d-none')
 		}else{
-			$('#btn-profile').addClass('d-none')
-			$('#btn-logout').addClass('d-none')
+			$('.user-link').addClass('d-none')
 		}
 	})
 

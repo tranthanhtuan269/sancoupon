@@ -18557,3 +18557,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0.8;
   margin-right: 10px;
 }
+
+.user-link{
+  margin-top: 10px;
+  width: 100%;
+  position: absolute;
+  top: 30px;
+  left: -10px;
+}
+
+.user-link li{
+  margin: 10px;
+  border: 1px solid #666;
+  width: 100%;
+  list-style-type: none;
+  border-radius: 2px;
+  padding: 5px;
+  background-color: #543131;
+}
+
+.user-link li a{
+  color:#ebebeb;
+}
