@@ -22,7 +22,8 @@ class HomeController extends Controller
     }
 
     public function profile(){
-        return view('profile');
+        $histories = History::where('user_id', Auth::id())->whereDate('created_at', Carbon::today())->orderBy('created_at', 'desc')->get();
+        return view('profile', ['histories' => $histories]);
     }
 
     public function admin(){

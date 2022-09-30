@@ -146,11 +146,12 @@
 
       @yield('content')
 
+      
       <!-- ============================================-->
       <!-- <section> begin ============================-->
       <section class="py-0 pt-7 bg-1000">
-
         <div class="container">
+          @if(false)
           <div class="row justify-content-lg-between">
             <h5 class="lh-lg fw-bold text-white">OUR TOP CITIES</h5>
             <div class="col-6 col-md-4 col-lg-auto mb-3">
@@ -200,6 +201,7 @@
             </div>
           </div>
           <hr class="text-900" />
+          @endif
           <div class="row">
             <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-3">
               <h5 class="lh-lg fw-bold text-white">COMPANY</h5>
@@ -297,9 +299,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
     <script src="/public/vendors/fontawesome/all.min.js"></script>
     <script src="/public/assets/js/theme.js"></script>
-
     <script src="/public/assets/js/function.js"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;display=swap" rel="stylesheet">
   </body>
 

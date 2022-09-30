@@ -18579,3 +18579,114 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .user-link li a{
   color:#ebebeb;
 }
+
+
+#wrapper{
+  min-height: 550px;
+}
+#luckywheel .hc-luckywheel-container{
+  left: -16px;
+  top: -17px;
+}
+#luckywheel .hc-luckywheel-btn{
+  left: 195px;
+  top: 195px;
+}
+.item-history{
+  float: left;
+  width: 100%;
+}
+.item-history .column-1{
+  float: left;
+  width:5%;
+}
+.item-history .column-2{
+  float: left;
+  width:20%;
+}
+.item-history .column-3{
+  float: left;
+  width:40%;
+}
+.item-history .column-4{
+  float: left;
+  width:20%;
+}
+.item-history .column-5{
+  float: left;
+  width:15%;
+}
+.gift-panel{
+  background-color: #fff;
+  position: fixed;
+  width: 60%;
+  top: 180px;
+  left: 20%;
+  z-index: 999;
+  padding: 15px;
+  border: 1px solid #66666680;
+  border-radius: 8px;
+}
+.item-gift{
+  width: 100%;
+  height: 50px;
+  clear: both;
+}
+.item-number{
+  width: 10%;
+  float: left;
+}
+.item-image{
+  width: 21%;
+  float: left;
+}
+.item-content{
+  width: 69%;
+  float: left;
+  text-align: left;
+}
+#close-svg-btn{
+  width: 40px;
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  border: 4px solid black;
+  border-radius: 50%;
+  height: 40px;
+  background-color: white;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.item-gift-header{
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 0 20px;
+}
+#user-coin, #user-roll{
+  font-weight: bold;
+  color: #ed3d3d;
+}
+.item-gift-list{
+  height: 300px;
+  overflow-y: auto;
+}
+
+.user-name{
+  font-weight: bold;
+  font-size: 26px;
+  margin: 10px;
+}
+.user-email{
+  font-size: 14px;
+  font-weight: 700;
+  margin: 10px;
+}
+.user-phone{
+  font-size: 14px;
+  font-weight: 700;
+  margin: 10px;
+}
+.icon-profile{
+  width: 16px;
+  margin-right: 10px;
+}

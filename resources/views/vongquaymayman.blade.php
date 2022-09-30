@@ -1,97 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-      #wrapper{
-        min-height: 550px;
-      }
-      #luckywheel .hc-luckywheel-container{
-        left: -16px;
-        top: -17px;
-      }
-      #luckywheel .hc-luckywheel-btn{
-        left: 195px;
-        top: 195px;
-      }
-      .item-history{
-        float: left;
-        width: 100%;
-      }
-      .item-history .column-1{
-        float: left;
-        width:5%;
-      }
-      .item-history .column-2{
-        float: left;
-        width:20%;
-      }
-      .item-history .column-3{
-        float: left;
-        width:40%;
-      }
-      .item-history .column-4{
-        float: left;
-        width:20%;
-      }
-      .item-history .column-5{
-        float: left;
-        width:15%;
-      }
-      .gift-panel{
-        background-color: #fff;
-        position: fixed;
-        width: 60%;
-        top: 180px;
-        left: 20%;
-        z-index: 999;
-        padding: 15px;
-        border: 1px solid #66666680;
-        border-radius: 8px;
-      }
-      .item-gift{
-        width: 100%;
-        height: 50px;
-        clear: both;
-      }
-      .item-number{
-        width: 10%;
-        float: left;
-      }
-      .item-image{
-        width: 21%;
-        float: left;
-      }
-      .item-content{
-        width: 69%;
-        float: left;
-        text-align: left;
-      }
-      #close-svg-btn{
-        width: 40px;
-        position: absolute;
-        right: -20px;
-        top: -20px;
-        border: 4px solid black;
-        border-radius: 50%;
-        height: 40px;
-        background-color: white;
-        opacity: 0.8;
-        cursor: pointer;
-      }
-      .item-gift-header{
-        font-weight: bold;
-        font-size: 18px;
-        padding: 10px 0 20px;
-      }
-      #user-coin, #user-roll{
-        font-weight: bold;
-        color: #ed3d3d;
-      }
-      .item-gift-list{
-        height: 300px;
-        overflow-y: auto;
-      }
-    </style>
     <link rel="stylesheet" href="/public/luckywheel/css/typo/typo.css" />
     <link rel="stylesheet" href="/public/luckywheel/css/hc-canvas-luckwheel.css" />
     <div class="container mt-8">
@@ -169,7 +78,7 @@
       </div>
     </div>
 
-    <div class="panel gift-panel">
+    <div class="panel gift-panel d-none">
       <div class="close-gift-panel"><svg id="close-svg-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg></div>
       <div class="text-center item-gift-header">
         Vật phẩm trong túi quà hôm nay ({{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y') }})
