@@ -184,7 +184,6 @@
       @endforeach
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="/public/luckywheel/js/hc-canvas-luckwheel.js"></script>
     <script>
       var isPercentage = true;

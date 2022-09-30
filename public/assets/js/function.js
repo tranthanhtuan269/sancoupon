@@ -48,6 +48,16 @@ $(document).ready(function(){
 		});
 	})
 
+	$('#alertAuth').click(function(){
+		Swal.fire(
+			'Lỗi',
+			'Bạn cần đăng nhập để thực hiện chức năng này!',
+			'error'
+		).then(function() {
+			$('#login-panel').removeClass('d-none');
+		});
+	})
+
 	$('#btn-register').click(function(){
 		var name = $('#inputNameRegister').val();
 		var email = $('#inputEmailRegister').val();

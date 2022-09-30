@@ -9,7 +9,11 @@
               <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Bạn có đang 'đói'?</h1>
               <h1 class="text-800 mb-3 fs-4">Truy cập ngay <b><i><u>VÒNG QUAY MAY MẮN</u></i></b><br class="d-none d-xxl-block" /> để tích điểm và mua đồ rẻ hơn</h1>
               <div class="w-xxl-75">
+                @auth
                 <a class="btn btn-danger" href="/vongquaymayman">Vòng Quay May Mắn</a>
+                @else
+                <div class="btn btn-danger" id="alertAuth">Vòng Quay May Mắn</div>
+                @endauth
               </div>
             </div>
           </div>
