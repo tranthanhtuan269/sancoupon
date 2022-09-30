@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `coupons` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table coupon.coupons: ~1 rows (approximately)
+-- Dumping data for table coupon.coupons: ~0 rows (approximately)
 /*!40000 ALTER TABLE `coupons` DISABLE KEYS */;
 INSERT INTO `coupons` (`id`, `product_id`, `coupon_code`, `detail`, `created_at`, `update_at`) VALUES
 	(1, 1, 'mR3-1DB-oED-pKz', 'Làm móng tại LinhYun được giảm 20%', NULL, NULL),
@@ -62,9 +62,9 @@ CREATE TABLE IF NOT EXISTS `histories` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table coupon.histories: ~0 rows (approximately)
+-- Dumping data for table coupon.histories: ~50 rows (approximately)
 /*!40000 ALTER TABLE `histories` DISABLE KEYS */;
 INSERT INTO `histories` (`id`, `rolls`, `coupon_id`, `detail`, `user_id`, `created_at`, `updated_at`) VALUES
 	(1, 7, NULL, 'Mất lượt', 1, '2022-09-29 04:28:04', '2022-09-29 04:28:04'),
@@ -112,7 +112,12 @@ INSERT INTO `histories` (`id`, `rolls`, `coupon_id`, `detail`, `user_id`, `creat
 	(43, 29, NULL, 'Thêm 3 lượt', 1, '2022-09-29 10:00:45', '2022-09-29 10:00:45'),
 	(44, 32, 2, 'Học móng tại LinhYun được giảm 20%', 1, '2022-09-29 10:03:15', '2022-09-29 10:03:15'),
 	(45, 31, NULL, 'Thêm 3 lượt', 1, '2022-09-29 10:03:24', '2022-09-29 10:03:24'),
-	(46, 34, NULL, 'Mất lượt', 1, '2022-09-29 10:36:23', '2022-09-29 10:36:23');
+	(46, 34, NULL, 'Mất lượt', 1, '2022-09-29 10:36:23', '2022-09-29 10:36:23'),
+	(47, 33, NULL, '3 coins', 1, '2022-09-30 01:44:07', '2022-09-30 01:44:07'),
+	(48, 32, 2, 'Học móng tại LinhYun được giảm 20%', 1, '2022-09-30 04:26:32', '2022-09-30 04:26:32'),
+	(49, 31, NULL, '3 coins', 1, '2022-09-30 04:35:56', '2022-09-30 04:35:56'),
+	(50, 5, NULL, 'Thêm 3 lượt', 2, '2022-09-30 08:23:29', '2022-09-30 08:23:29'),
+	(51, 8, 1, 'Làm móng tại LinhYun được giảm 20%', 2, '2022-09-30 09:06:48', '2022-09-30 09:06:48');
 /*!40000 ALTER TABLE `histories` ENABLE KEYS */;
 
 -- Dumping structure for table coupon.migrations
@@ -131,6 +136,22 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(3, '2019_08_19_000000_create_failed_jobs_table', 1),
 	(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+
+-- Dumping structure for table coupon.partners
+CREATE TABLE IF NOT EXISTS `partners` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `images` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table coupon.partners: ~0 rows (approximately)
+/*!40000 ALTER TABLE `partners` DISABLE KEYS */;
+/*!40000 ALTER TABLE `partners` ENABLE KEYS */;
 
 -- Dumping structure for table coupon.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
@@ -197,12 +218,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table coupon.users: ~1 rows (approximately)
+-- Dumping data for table coupon.users: ~2 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `coins`, `rolls`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Tuan', 'tuantt6393@gmail.com', '', 80, 33, NULL, '$2y$10$QHL7YrTwruVpz8jHnRMkFOE6eE.yO8GT0JVJNvl3Na0ID6sqgu06y', NULL, '2022-09-27 09:40:33', '2022-09-29 10:36:23');
+	(1, 'Tuan', 'tuantt6393@gmail.com', '', 86, 30, NULL, '$2y$10$QHL7YrTwruVpz8jHnRMkFOE6eE.yO8GT0JVJNvl3Na0ID6sqgu06y', NULL, '2022-09-27 09:40:33', '2022-09-30 04:35:56'),
+	(2, 'Tuan Tuấn', 'tran.thanh.tuan269@gmail.com', '0973619398', 0, 7, NULL, '$2y$10$uSP5B2Kn3pQWSeSzrLMErO4MPTYQGYi4z0sS8pOGsDHnqeEgYsEO6', NULL, '2022-09-30 06:59:40', '2022-09-30 09:06:48');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
